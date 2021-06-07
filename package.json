@@ -1,0 +1,11 @@
+{
+  "name": "e-wallet",
+  "version": "1.0.0",
+  "description": "save transfer credit money",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arthur",
+  "license": "ISC"
+}
