@@ -29,13 +29,11 @@ const userSchema = new mongoose.Schema({
   },
   confirm_password: {
     type: String,
-    required: true,
     minlength: 6,
     maxlength: 128,
   },
   reset_password: {
     type: String,
-    required: true,
     minlength: 6,
     maxlength: 128,
   },
@@ -46,6 +44,11 @@ const userSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 });
+
+userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
+  const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
+  return !!user;
+};
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
